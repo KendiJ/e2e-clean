@@ -6,6 +6,9 @@ import 'package:retrofit/retrofit.dart';
 import 'package:epam_test/src/utils/resources/data_state.dart';
 
 abstract class BaseApiRepository {
+  get data => null;
+  get error => null;
+
 
   @protected
   Future<DataState<T>> getStateOf<T>({
@@ -18,7 +21,7 @@ abstract class BaseApiRepository {
       } else {
         throw DioError(
           response: httpResponse.response,
-          requestOptions: httpResponse.requestOptions,
+          requestOptions: httpResponse.response.requestOptions,
         );
       }
     } on DioError catch (error) {

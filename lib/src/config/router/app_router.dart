@@ -1,19 +1,17 @@
 
 import 'package:auto_route/auto_route.dart';
-// import 'package:epam_test/main.dart';
 import 'package:flutter/material.dart';
 
-import '../../presentation/views/breaking_news.dart';
+import '../../presentation/views/breaking_news_view.dart';
 
 part 'app_router.gr.dart';
 
 
 @AdaptiveAutoRouter(
   routes: [
-    // AutoRoute(page: MyHomePage, initial: true),
-    AutoRoute(page: BreakingNewsPage),
-    // AutoRoute(page: ArticlesPage),
-    // AutoRoute(page: SavedArticlePage),
+   AutoRoute(
+    page: BreakingNewsView, initial: true
+   ),
 
   ]
 )

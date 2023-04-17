@@ -17,10 +17,10 @@ class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
-    BreakingNewsPageRoute.name: (routeData) {
+    BreakingNewsViewRoute.name: (routeData) {
       return AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const BreakingNewsPage(),
+        child: const BreakingNewsView(),
       );
     }
   };
@@ -28,20 +28,20 @@ class _$AppRouter extends RootStackRouter {
   @override
   List<RouteConfig> get routes => [
         RouteConfig(
-          BreakingNewsPageRoute.name,
-          path: '/breaking-news-page',
+          BreakingNewsViewRoute.name,
+          path: '/',
         )
       ];
 }
 
 /// generated route for
-/// [BreakingNewsPage]
-class BreakingNewsPageRoute extends PageRouteInfo<void> {
-  const BreakingNewsPageRoute()
+/// [BreakingNewsView]
+class BreakingNewsViewRoute extends PageRouteInfo<void> {
+  const BreakingNewsViewRoute()
       : super(
-          BreakingNewsPageRoute.name,
-          path: '/breaking-news-page',
+          BreakingNewsViewRoute.name,
+          path: '/',
         );
 
-  static const String name = 'BreakingNewsPageRoute';
+  static const String name = 'BreakingNewsViewRoute';
 }

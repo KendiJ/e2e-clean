@@ -1,29 +1,31 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-
+import 'package:epam_test/src/domain/models/articles.dart';
+import 'package:epam_test/src/presentation/cubits/cubit/remote_articles_cubit.dart';
 import 'package:equatable/equatable.dart';
 
-import '../articles.dart';
+
 
 class BreakingNewsResponse extends Equatable {
   final String status;
   final int totalResults;
-  final List<Articles> articles;
+  final List<Article> articles;
 
-  const BreakingNewsResponse({
+  BreakingNewsResponse({
     required this.status,
     required this.totalResults,
     required this.articles,
   });
 
-
   factory BreakingNewsResponse.fromMap(Map<String, dynamic> map) {
     return BreakingNewsResponse(
-      status: map['status'] as String,
-      totalResults: map['totalResults'] as int,
-      articles: List<Articles>.from((map['articles'] as List<int>).map<Articles>((x) => Articles.fromMap(x as Map<String,dynamic>),),),
+      status: (map['status'] ?? '') as String,
+      totalResults: (map['totalResults'] ?? 0) as int,
+      articles: List<Article>.from(
+        map['articles'].map<RemoteArticlesCubit>(
+          (x) => Article.fromMap(x as Map<String, dynamic>),
+        ),
+      ),
     );
   }
-
 
   @override
   bool get stringify => true;

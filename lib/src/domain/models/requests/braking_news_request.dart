@@ -1,3 +1,5 @@
+import '../../../utils/constants/strings.dart';
+
 class BreakingNewsRequest {
   final String apiKey;
   final String country;
@@ -6,7 +8,7 @@ class BreakingNewsRequest {
   final int page;
 
   BreakingNewsRequest({
-    this.apiKey = '376fe50f2ad5497098d0db37a30e2c43',
+    this.apiKey = defaultApiKey,
     this.country = 'us',
     this.category = 'general',
     this.pageSize = 20,

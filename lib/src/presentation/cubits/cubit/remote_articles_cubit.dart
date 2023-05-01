@@ -1,19 +1,20 @@
 import 'package:dio/dio.dart';
-import 'package:epam_test/src/domain/models/articles.dart';
-import 'package:epam_test/src/domain/models/requests/braking_news_request.dart';
-import 'package:epam_test/src/domain/repositories/api_repository.dart';
-import 'package:epam_test/src/utils/resources/data_state.dart';
 import 'package:equatable/equatable.dart';
 
+import '../../../domain/models/articles.dart';
+import '../../../domain/models/requests/braking_news_request.dart';
+import '../../../domain/repositories/api_repository.dart';
+import '../../../utils/resources/data_state.dart';
 import '../base/base_cubit.dart';
 
 part 'remote_articles_state.dart';
 
-class RemoteArticlesCubit extends BaseCubit<RemoteArticlesState, List<Articles>> {
+class RemoteArticlesCubit
+    extends BaseCubit<RemoteArticlesState, List<Article>> {
   final ApiRepository _apiRepository;
 
   RemoteArticlesCubit(this._apiRepository)
-      : super(const RemoteArticlesInitial(), []);
+      : super(const RemoteArticlesLoading(), []);
 
   int _page = 1;
 
@@ -21,17 +22,19 @@ class RemoteArticlesCubit extends BaseCubit<RemoteArticlesState, List<Articles>>
     if (isBusy) return;
 
     await run(() async {
-      final response = await _apiRepository.getBreakingNews(
+      final response = await _apiRepository.getBreakingNewsArticles(
         request: BreakingNewsRequest(page: _page),
       );
 
-      if(response is DataSuccess) {
-        final articles = response.data.articles;
+      if (response is DataSuccess) {
+        final articles = response.data!.articles;
         final noMoreData = articles.length < 20;
+
+        data.addAll(articles);
         _page++;
 
         emit(RemoteArticlesSuccess(articles: data, noMoreData: noMoreData));
-      } else if(response is DataFailed) {
+      } else if (response is DataFailed) {
         emit(RemoteArticlesFailed(error: response.error));
       }
     });

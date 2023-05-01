@@ -1,7 +1,7 @@
 part of 'remote_articles_cubit.dart';
 
 abstract class RemoteArticlesState extends Equatable {
-final List<Articles> articles;
+final List<Article> articles;
 final bool noMoreData;
 final DioError? error;
 
@@ -16,16 +16,16 @@ final DioError? error;
   List<Object?> get props => [articles, noMoreData, error];
 }
 
-class RemoteArticlesInitial extends RemoteArticlesState {
-  const RemoteArticlesInitial();
-}
+// class RemoteArticlesInitial extends RemoteArticlesState {
+//   const RemoteArticlesInitial();
+// }
 
 class RemoteArticlesLoading extends RemoteArticlesState {
   const RemoteArticlesLoading();
 }
 
 class RemoteArticlesSuccess extends RemoteArticlesState {
-  const RemoteArticlesSuccess({required List<Articles> articles, required bool noMoreData});
+  const RemoteArticlesSuccess({required List<Article> articles, required bool noMoreData});
 }
 class RemoteArticlesFailed extends RemoteArticlesState {
   const RemoteArticlesFailed({required DioError error});

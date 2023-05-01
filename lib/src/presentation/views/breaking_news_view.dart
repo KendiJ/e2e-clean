@@ -51,7 +51,7 @@ class BreakingNewsView extends HookWidget {
 
   Widget _buildArticles(
     ScrollController scrollController,
-    List<Articles> articles,
+    List<Article> articles,
     bool noMoreData,
   ) {
     return CustomControllView(
@@ -59,7 +59,7 @@ class BreakingNewsView extends HookWidget {
       slivers: [
         SliverList(
           delegate: SliverChildBuilderDelegate(
-            (context, index) => ArticleWidget(article: articles[index]),
+            (context, index) => Articles(article: articles[index]),
             childCount: articles.length,
           ),
         ),

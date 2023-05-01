@@ -12,7 +12,7 @@ class ApiRepositoryImpl extends BaseApiRepository implements ApiRepository {
   ApiRepositoryImpl(this._newsApiService);
 
   @override
-  Future<DataState<BreakingNewsResponse>> getBreakingNews(
+  Future<DataState<BreakingNewsResponse>> getBreakingNewsArticles(
       {required BreakingNewsRequest request}) {
     return getStateOf<BreakingNewsResponse>(
       request: () => _newsApiService.getBreakingNewsArticles(

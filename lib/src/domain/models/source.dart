@@ -1,11 +1,9 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
 
 class Source extends Equatable {
   final String id;
   final String name;
+  
   const Source({
     required this.id,
     required this.name,
@@ -21,17 +19,11 @@ class Source extends Equatable {
     );
   }
 
-  // Map<String, dynamic> toMap() {
-  //   return <String, dynamic>{
-  //     'id': id,
-  //     'name': name,
-  //   };
-  // }
 
   factory Source.fromMap(Map<String, dynamic> map) {
     return Source(
-      id: map['id'] as String,
-      name: map['name'] as String,
+      id: map['id'] !=null ? map['id'] as String: '',
+      name: map['name'] !=null ? map['name'] as String: '',
     );
   }
 

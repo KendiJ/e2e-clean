@@ -4,7 +4,7 @@ import 'package:epam_test/src/domain/models/responses/breaking_news_response.dar
 import '../../utils/resources/data_state.dart';
 
 abstract class ApiRepository {
-  Future<DataState<BreakingNewsResponse>> getBreakingNews({
+  Future<DataState<BreakingNewsResponse>> getBreakingNewsArticles({
     required BreakingNewsRequest request,
   });
 }
